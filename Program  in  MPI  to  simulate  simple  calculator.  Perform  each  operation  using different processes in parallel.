@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<mpi.h>
+int main(int argc , char *argv[]){
+
+MPI_Init(&argc, &argv);
+int rank;
+int a=10,b=2;
+MPI_Comm_rank( MPI_COMM_WORLD, &rank);
+
+if (rank==0)
+{
+printf("\n SUM in process %d is %d\n",rank,a+b);
+}
+
+if (rank==1)
+{
+printf("\n DIFFERENCE in process %d is %d\n",rank,a-b);
+}
+
+if (rank==2)
+{
+printf("\n PRODUCT in process %d is %d\n",rank,a*b);
+}
+
+if (rank==3)
+{
+printf("\n QUOTIENT AFTER DIVISION in process %d is %d\n",rank,a/b);
+printf("\n REMAINDER AFTER DIVISION in process %d is %d\n",rank,a%b);
+}
+
+MPI_Finalize();
+
+}
